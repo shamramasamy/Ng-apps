@@ -1,0 +1,350 @@
+
+<section class="menu-page">
+
+  <!-- Announcement Bar -->
+  <div class="announcement-bar">
+    <span>✨</span>
+    FRESHLY PREPARED • AUTHENTIC TASTE • made with bun
+    <span>✨</span>
+  </div>
+
+  <!-- Brand Header -->
+  
+<header class="brand-header">
+
+  <div class="brand-logo">
+
+    <div class="brand-emblem">
+      <span class="emblem-star">✦</span>
+      <span class="emblem-leaf">❧</span>
+    </div>
+
+    <div class="brand-name">
+      <div class="brand-overline">✧ EST. WITH LOVE ✧</div>
+
+      <h1 class="brand-title">
+        ANNAPOORNA
+      </h1>
+
+      <div class="brand-subtitle">
+        <span></span>
+        <h2>S W E E T S</h2>
+        <span></span>
+      </div>
+
+      <p class="brand-tagline">
+        THE ART OF TRADITIONAL SWEETNESS
+      </p>
+    </div>
+
+  </div>
+
+  <nav class="brand-nav">
+    <a href="#home">Home</a>
+    <a href="#products">Our Collection</a>
+    <a href="#special">Special Offers</a>
+  </nav>
+
+  <a href="#products" class="header-order-btn">
+    Explore Sweets <span>→</span>
+  </a>
+
+</header>
+
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="home">
+
+    <div class="hero-content">
+
+      <div class="hero-label">
+        <span class="pulse-dot"></span>
+        WELCOME TO ANNAPOORNA SWEETS
+      </div>
+
+      <h1>
+        A World Full of
+        <span class="gradient-text">Sweetness!</span>
+        <span class="hero-emoji">🍬</span>
+      </h1>
+
+      <p>
+        Bringing happiness to every occasion with authentic Indian sweets,
+        delicious crispy snacks and irresistible treats.
+        Experience the magic of tradition in every bite.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#products" class="primary-btn">
+          Explore Our Sweets <span>→</span>
+        </a>
+
+        <a href="#special" class="secondary-btn">
+          View Special Offers
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div>
+          <strong>100%</strong>
+          <span>Fresh Quality</span>
+        </div>
+        <div>
+          <strong>♥</strong>
+          <span>Made with Love</span>
+        </div>
+        <div>
+          <strong>∞</strong>
+          <span>Sweet Memories</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="hero-visual">
+
+      <div class="hero-glow"></div>
+
+      <div class="hero-main-image">
+        <img
+          src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=1000"
+          alt="Delicious bakery treats">
+      </div>
+
+      <div class="floating-decoration decoration-one">🍩</div>
+      <div class="floating-decoration decoration-two">🍬</div>
+      <div class="floating-decoration decoration-three">🧁</div>
+      <div class="floating-decoration decoration-four">✨</div>
+
+      <div class="floating-offer">
+        <span>MADE FRESH</span>
+        <strong>EVERY DAY!</strong>
+        <small>Happiness in every bite</small>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Benefits Strip -->
+  <section class="benefits-strip">
+
+    <div class="benefit-item">
+      <span>🍯</span>
+      <div>
+        <strong>Authentic Taste</strong>
+        <small>Traditional recipes</small>
+      </div>
+    </div>
+
+    <div class="benefit-item">
+      <span>🥮</span>
+      <div>
+        <strong>Freshly Prepared</strong>
+        <small>Quality ingredients</small>
+      </div>
+    </div>
+
+    <div class="benefit-item">
+      <span>🎁</span>
+      <div>
+        <strong>Perfect Gifting</strong>
+        <small>Special celebrations</small>
+      </div>
+    </div>
+
+    <div class="benefit-item">
+      <span>❤️</span>
+      <div>
+        <strong>Made with Love</strong>
+        <small>Sweetness in every bite</small>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Product Section -->
+  <section class="products-section" id="products">
+
+    <div class="section-heading">
+
+      <div>
+        <span class="section-label">✦ HANDPICKED FOR YOU ✦</span>
+        <h2>Explore Our <span>Delights</span></h2>
+        <p>Discover your favourite sweets and snacks.</p>
+      </div>
+
+      <div class="cart-indicator">
+        <span class="cart-icon">🛒</span>
+        <span>My Cart</span>
+        <strong>{{ cartCount }}</strong>
+      </div>
+
+    </div>
+
+    <!-- Filters -->
+    <div class="filter-section">
+
+      <div class="category-list">
+
+        <button
+          *ngFor="let category of categories"
+          type="button"
+          [class.active]="selectedCategory === category"
+          (click)="selectCategory(category)">
+
+          {{ category }}
+
+        </button>
+
+      </div>
+
+      <div class="search-box">
+        <span>⌕</span>
+
+        <input
+          type="text"
+          [(ngModel)]="searchText"
+          placeholder="Find your favourite treat...">
+
+      </div>
+
+    </div>
+
+    <!-- Product Grid -->
+    <div class="product-grid">
+
+      <article
+        class="product-card"
+        *ngFor="let product of filteredProducts; trackBy: trackByProductId">
+
+        <div class="product-image">
+
+          <img
+            [src]="product.image"
+            [alt]="product.name"
+            loading="lazy">
+
+          <span class="product-tag" *ngIf="product.tag">
+            ✦ {{ product.tag }}
+          </span>
+
+          <button
+            class="quick-add"
+            type="button"
+            (click)="addToCart(product)"
+            aria-label="Add to cart">
+            +
+          </button>
+
+          <div class="image-overlay">
+            <span>DELICIOUSLY YOURS ❤️</span>
+          </div>
+
+        </div>
+
+        <div class="product-info">
+
+          <span class="product-category">
+            {{ product.category }}
+          </span>
+
+          <h3>{{ product.name }}</h3>
+
+          <p>{{ product.description }}</p>
+
+          <div class="product-rating">
+            <span>★</span>
+            {{ product.rating }}
+            <small>Customer rating</small>
+          </div>
+
+          <div class="product-bottom">
+
+            <div class="price">
+              <strong>₹{{ product.price }}</strong>
+
+              <del *ngIf="product.oldPrice">
+                ₹{{ product.oldPrice }}
+              </del>
+            </div>
+
+            <button
+              class="add-cart-btn"
+              type="button"
+              (click)="addToCart(product)">
+              Add to Cart <span>+</span>
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" *ngIf="filteredProducts.length === 0">
+
+      <span>🍪</span>
+      <h3>Oops! No treats found.</h3>
+      <p>Try another search or explore our complete collection.</p>
+
+      <button
+        type="button"
+        (click)="searchText = ''; selectCategory('All')">
+        Explore All Products
+      </button>
+
+    </div>
+
+  </section>
+
+  <!-- Special Offer Banner -->
+  <section class="special-banner" id="special">
+
+    <div class="special-content">
+
+      <span class="special-label">🎉 MAKE EVERY MOMENT SWEETER</span>
+
+      <h2>
+        Share Happiness.<br>
+        <span>Gift Some Sweetness!</span>
+      </h2>
+
+      <p>
+        Celebrate festivals, birthdays and special occasions
+        with our delightful collection of sweet gift boxes.
+      </p>
+
+      <a href="#products" class="special-btn">
+        Explore Gift Collection <span>→</span>
+      </a>
+
+    </div>
+
+    <div class="special-visual">
+      <div class="gift-circle">🎁</div>
+      <span class="gift-decoration gift-one">✨</span>
+      <span class="gift-decoration gift-two">🍬</span>
+      <span class="gift-decoration gift-three">💛</span>
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer class="brand-footer">
+
+    <div class="footer-logo">
+      <h2>ANNAPOORNA <span>SWEETS</span></h2>
+      <p>Making every moment a little sweeter.</p>
+    </div>
+
+    <p class="footer-copy">
+      © 2026 Annapoorna Sweets. Crafted with ❤️
+    </p>
+
+  </footer>
+
+</section>
